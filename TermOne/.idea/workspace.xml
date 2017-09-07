@@ -65,6 +65,11 @@
               <item name="TermOne" type="b2602c69:ProjectViewProjectNode" />
               <item name="TermOne" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TermOne" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TermOne" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -73,7 +78,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Project-X" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../August31" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
