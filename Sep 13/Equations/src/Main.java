@@ -21,8 +21,10 @@ public class Main {
         boolean ok = false;
         String done = null;
 
+        //This is The Menu
+
         while(!ok) {
-            System.out.println("Enter 1(Pythagorean Theory), 2(Quadratic Formula), or 3(House Payments)");
+            System.out.println("Enter 1(Pythagorean Theory), 2(Quadratic Formula), 3(House Payments), or 4(Profit Calculator)");
 
             int choice = Integer.parseInt(scan.nextLine());
             if (choice == 1) {
@@ -81,12 +83,39 @@ public class Main {
                     System.out.println("Invalid Answer. Defaulting to NO");
                     ok = true;
                 }
+
+                }else if(choice == 4){
+
+                System.out.println("Please Enter the number of Items Sold");
+                int itemsSold = scan.nextInt();
+                System.out.println("Please Enter the Cost of each Item Sold");
+                double itemPrice = scan.nextDouble();
+                System.out.println("Please Enter the cost of each Item Built");
+                double itemCost = scan.nextDouble();
+                System.out.println("Please Enter the number of Items Built");
+                int itemsBuilt = scan.nextInt();
+
+                System.out.println("Your Profit is "+profit(itemsSold, itemPrice, itemCost, itemsBuilt));
+
+                System.out.println();
+                System.out.println("Try another equation? Y/N");
+                done = scan.next();
+                if (done.equalsIgnoreCase("N"))
+                    ok = true;
+                else if (done.equalsIgnoreCase("Y"))
+                    System.out.println();
+                else{
+                    System.out.println("Invalid Answer. Defaulting to NO");
+                    ok = true;
+                }
+
             } else
                 System.out.println("You're stupid. And I mean that in the nicest possible way.");
         }
         System.out.println("Goodbye.");
     }
 
+    //Quadratic Theory
 
     private static void solve() {
 
@@ -141,6 +170,8 @@ public class Main {
     }
 
 
+    //House Payment Calculator
+
     private static double calculate(int p, double r, int n, int t){
 
         double payment;
@@ -150,6 +181,7 @@ public class Main {
         return payment;
     }
 
+    //Pythagorean Theorum
 
     private static double pythagorean(int a, int c){
         double answer;
@@ -157,5 +189,13 @@ public class Main {
         answer=Math.sqrt((c*c-a*a));
 
         return answer;
+    }
+
+    //Profit Calculator
+
+    private static double profit(int itemsSold, double itemPrice, double itemCost, int itemsBuilt){
+
+        return (itemsSold*itemPrice)-(itemsBuilt*itemCost);
+
     }
 }
