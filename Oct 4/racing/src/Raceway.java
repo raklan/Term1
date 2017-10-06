@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class Raceway extends ButtonWindow{
 
@@ -6,25 +7,37 @@ public class Raceway extends ButtonWindow{
     private Racer racerOne, racerTwo;
     private boolean done;
     private JLabel winner;
+    private Timer t;
 
     public Raceway(){
 
         win = new ButtonWindowFrame("Welcome to the Races!");
-        win.addActButton(350,450,100,25);
+        win.addActButton(650,450,100,25);
         //track1();
         //track2();
-        racerOne = new Racer(50,50,100,100, "spaceship.png");
-        win.add(racerOne);
         winner = new JLabel("Get Set...");
-        winner.setBounds(50,450,200,25);
+        winner.setBounds(25,450,200,25);
         win.add(winner,0);
         done = false;
+
+        Rectangle track = new Rectangle(100,100,500,500);
+        track.setBackground(Color.decode("#000000"));
+        Rectangle middle = new Rectangle(100,100,300,300);
+        middle.setBackground(Color.decode("#ffffff"));
+
+        win.add(track,0);
+        track.add(middle,0);
+
+        racerOne = new Racer(25,25,50,50, "spaceship.png");
+        track.add(racerOne);
+
         win.repaint();
 
     }
     public void act(){
         racerOne.move();
     }
+
     public static void main(String[]args){
 
         Raceway theRace = new Raceway();

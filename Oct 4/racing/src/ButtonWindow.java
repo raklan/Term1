@@ -33,7 +33,7 @@ public abstract class ButtonWindow
         public ButtonWindowFrame(String s)
         {
             super(s);
-            setBounds(20, 5, 900, 550);  
+            setBounds(20, 5, 1000, 1000);
             pane = getContentPane();
             pane.setLayout(null);
             setVisible(true);
