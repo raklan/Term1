@@ -12,7 +12,7 @@ public class Raceway extends ButtonWindow{
     public Raceway(){
 
         win = new ButtonWindowFrame("Welcome to the Races!");
-        win.addActButton(650,450,100,25);
+        win.addAnimateButton(650,450,100,25);
         //track1();
         //track2();
         winner = new JLabel("Get Set...");
@@ -35,6 +35,7 @@ public class Raceway extends ButtonWindow{
 
     }
     public void act(){
+        win.animate();
         racerOne.move();
     }
 
