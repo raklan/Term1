@@ -77,14 +77,14 @@ public abstract class ButtonWindow
         //---------- Method called when a button is clicked -----------
         public void actionPerformed(ActionEvent e)
         {
-            //             if (e.getSource() == actButton)
-            act(); 
-            //             else if (e.getSource() == inputButton)
-            //                 inputAction();
-            //             else if (e.getSource() == resetButton)
-            //                 resetAction();
-            //             else if (e.getSource() == animateButton)
-            //                 animate();
+                        if (e.getSource() == actButton)
+                            act();
+                        //else if (e.getSource() == inputButton)
+                            //inputAction();
+                       //else if (e.getSource() == resetButton)
+                            //resetAction();
+                        else if (e.getSource() == animateButton)
+                             animate();
         }
 
         //-------- Additional Regular Buttons and Methods --------------
