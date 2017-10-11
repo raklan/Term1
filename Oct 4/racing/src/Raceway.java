@@ -12,10 +12,8 @@ public class Raceway extends ButtonWindow{
     public Raceway(){
 
         win = new ButtonWindowFrame("Welcome to the Races!");
-        win.setBounds(50,50,1500,1500);
+        win.setBounds(50,50,1500,800);
         win.addAnimateButton(650,450,100,25);
-        //track1();
-        //track2();
         winner = new JLabel("Get Set...");
         winner.setBounds(25,650,200,25);
         win.add(winner,0);
@@ -24,12 +22,12 @@ public class Raceway extends ButtonWindow{
         Rectangle track = new Rectangle(100,100,500,500);
         track.setBackground(Color.decode("#000000"));
         Rectangle middle = new Rectangle(100,100,300,300);
-        middle.setBackground(Color.decode("#ffffff"));
+        middle.setBackground(Color.decode("#007a0e"));
 
         Rectangle track2 = new Rectangle(800,100,500,500);
         track.setBackground(Color.decode("#000000"));
         Rectangle middle2 = new Rectangle(100,100,300,300);
-        middle2.setBackground(Color.decode("#ffffff"));
+        middle2.setBackground(Color.decode("#007a0e"));
 
         win.add(track,0);
         track.add(middle,0);
@@ -47,6 +45,7 @@ public class Raceway extends ButtonWindow{
     public void act(){
 
         if(racerOne.getDone()==false&&racerTwo.getDone()==false) {
+            winner.setText("GO!!!");
             racerOne.move();
             racerTwo.move();
         }

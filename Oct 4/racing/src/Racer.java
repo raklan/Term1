@@ -84,6 +84,7 @@ public class Racer extends EzImage{
     public void setDeltaX(int dx){
         deltaX = dx;
     }
+
     public void setDeltaY(int dy){
         deltaY = dy;
     }
