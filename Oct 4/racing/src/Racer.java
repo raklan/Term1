@@ -33,23 +33,31 @@ public class Racer extends EzImage{
             if (leg == 1) {
                 this.setLocation(x + deltaX, y);
                 count++;
-                if(this.getX()>=425)
-                    this.setLeg(leg+1);
+                if(this.getX()>=425) {
+                    this.setLeg(leg + 1);
+                    this.setImage("SpaceshipDown.png");
+                }
             } else if (leg == 2) {
                 this.setLocation(x, y + deltaY);
                 count++;
-                if(this.getY()>=425)
-                    this.setLeg(leg+1);
+                if(this.getY()>=425) {
+                    this.setLeg(leg + 1);
+                    this.setImage("SpaceshipLeft.png");
+                }
             } else if (leg == 3) {
                 this.setLocation(x - deltaX, y);
                 count++;
-                if(this.getX()<=25)
-                    this.setLeg(leg+1);
+                if(this.getX()<=25) {
+                    this.setLeg(leg + 1);
+                    this.setImage("SpaceshipUp.png");
+                }
             } else if (leg == 4) {
                 this.setLocation(x, y - deltaY);
                 count++;
-                if(this.getY()<=25)
-                    this.setLeg(leg+1);
+                if(this.getY()<=25) {
+                    this.setLeg(leg + 1);
+                    this.setImage("SpaceshipRight.png");
+                }
             }
             else if(leg == 5)
                 this.setDone(true);
@@ -87,5 +95,19 @@ public class Racer extends EzImage{
 
     public void setDeltaY(int dy){
         deltaY = dy;
+    }
+
+    public void reset(){
+
+        this.setDone(false);
+
+        this.setLocation(25,25);
+
+        this.setLeg(1);
+
+        this.setImage("spaceshipRight.png");
+
+        this.setDeltaX(gen.nextInt(20)+1);
+        this.setDeltaY(this.getDeltaX());
     }
 }

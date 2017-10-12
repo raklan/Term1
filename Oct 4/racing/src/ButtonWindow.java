@@ -12,7 +12,7 @@ import java.util.TimerTask;
 public abstract class ButtonWindow  
 {  
     //---- Methods Needing Implementation in Subclasses ----------- 
-    //     public abstract void resetAction();
+    public abstract void resetAction();
     //     public abstract void inputAction();
     public abstract void act();
     
@@ -81,8 +81,8 @@ public abstract class ButtonWindow
                             act();
                         //else if (e.getSource() == inputButton)
                             //inputAction();
-                       //else if (e.getSource() == resetButton)
-                            //resetAction();
+                        else if (e.getSource() == resetButton)
+                            resetAction();
                         else if (e.getSource() == animateButton)
                              animate();
         }
@@ -157,7 +157,7 @@ public abstract class ButtonWindow
 
         public void setAnimateButtonText(String s)
         {
-            resetButton.setText(s);
+            animateButton.setText(s);
         }
 
         //-------- Animation Methods ------------------------------------
@@ -178,6 +178,7 @@ public abstract class ButtonWindow
         public void stop(){
             t.cancel();
             t = new Timer();
+            isAnimating = false;
         }
 
         public class MyTimerTask extends TimerTask
