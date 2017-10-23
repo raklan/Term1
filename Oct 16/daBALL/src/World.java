@@ -6,6 +6,7 @@ public class World extends ButtonWindow{
     private Rectangle border;
     private Rectangle middle;
     private Ball theBall;
+    private Ball theOtherBall;
 
     public World(){
 
@@ -23,19 +24,24 @@ public class World extends ButtonWindow{
         middle.setVisible(true);
         border.add(middle,0);
 
-        theBall = new Ball(10,10,50,50);
+        theBall = new Ball(10,10,75,75, "#8700c6");
         middle.add(theBall,0);
+
+        theOtherBall = new Ball(100,100,75,75, "#ff0000");
+        middle.add(theOtherBall,0);
 
         win.repaint();
 
     }
 
     public void act(){
-        theBall.move(middle);
+        theBall.move(middle, theOtherBall.getTop(), theOtherBall.getBottom(), theOtherBall.getLeft(), theOtherBall.getRight());
+        theOtherBall.move(middle, theBall.getTop(), theBall.getBottom(), theBall.getLeft(), theBall.getRight());
     }
     public void resetAction() {
         win.stop();
         theBall.reset();
+        theOtherBall.reset();
         win.setAnimateButtonText("Start");
     }
 
