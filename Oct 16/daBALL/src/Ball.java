@@ -15,6 +15,8 @@ public class Ball extends Oval{
     private int left;
     private int right;
 
+    private boolean canMove;
+
     public Ball(int x,int y,int w,int h, String c){
         super(x,y,w,h);
 
@@ -28,6 +30,8 @@ public class Ball extends Oval{
         initialX = x;
         initialY = y;
 
+        canMove = true;
+
         top = this.getY();
         bottom = this.getY()+this.getHeight();
         left = this.getX();
@@ -35,33 +39,41 @@ public class Ball extends Oval{
     }
     public void move(Rectangle middle, int otherTop, int otherBottom, int otherLeft, int otherRight){
 
-        if(this.getX()>=middle.getWidth()-this.getWidth()||this.getX()<=0)
-            this.setDeltaX(this.getDeltaX()*-1);
-        if(this.getY()>=middle.getHeight()-this.getHeight()||this.getY()<=0)
-            this.setDeltaY(this.getDeltaY()*-1);
-        this.setLocation(this.getX()+deltaX, this.getY()+deltaY);
+        if(canMove) {
 
-        //TopLeft
-        if(this.bottom>otherTop&&this.bottom<otherBottom&&this.right>otherLeft&&this.right<otherRight) {
-            this.setVisible(false);
-            this.reset();
-        }
-        //TopRight
-        if(this.bottom>otherTop&&this.bottom<otherBottom&&this.left>otherLeft&&this.left<otherLeft){
-            this.setVisible(false);
-            this.reset();
-        }
-        //BottomLeft
-        if(this.top>otherTop&&this.top<otherBottom&&this.right>otherLeft&&this.right<otherRight){
-            this.setVisible(false);
-            this.reset();
-        }
-        //BottomRight
-        if(this.top>otherTop&&this.top<otherBottom&&this.left>otherLeft&&this.left<otherRight){
-            this.setVisible(false);
-            this.reset();
-        }
+            if (this.getX() >= middle.getWidth() - this.getWidth() || this.getX() <= 0)
+                this.setDeltaX(this.getDeltaX() * -1);
+            if (this.getY() >= middle.getHeight() - this.getHeight() || this.getY() <= 0)
+                this.setDeltaY(this.getDeltaY() * -1);
+            this.setLocation(this.getX() + deltaX, this.getY() + deltaY);
 
+            this.setSides(this.getY(), this.getY() + this.getHeight(), this.getX(), this.getX() + this.getWidth());
+
+            //TopLeft
+            if (this.bottom > otherTop && this.bottom < otherBottom && this.right > otherLeft && this.right < otherRight) {
+                this.reset();
+                this.setVisible(false);
+                canMove = false;
+            }
+            //TopRight
+            if (this.bottom > otherTop && this.bottom < otherBottom && this.left > otherLeft && this.left < otherLeft) {
+                this.reset();
+                this.setVisible(false);
+                canMove = false;
+            }
+            //BottomLeft
+            if (this.top > otherTop && this.top < otherBottom && this.right > otherLeft && this.right < otherRight) {
+                this.reset();
+                this.setVisible(false);
+                canMove = false;
+            }
+            //BottomRight
+            if (this.top > otherTop && this.top < otherBottom && this.left > otherLeft && this.left < otherRight) {
+                this.reset();
+                this.setVisible(false);
+                canMove = false;
+            }
+        }
     }
     public int getDeltaX(){
         return deltaX;
@@ -87,10 +99,22 @@ public class Ball extends Oval{
     public int getLeft(){return left;}
     public int getRight(){return right;}
 
+    public void setTop(int t){top = t;}
+    public void setBottom(int b){bottom = b;}
+    public void setLeft(int l){left = l;}
+    public void setRight(int r){right = r;}
+
+    public void setSides(int t, int b, int l, int r){
+        top = t;
+        bottom = b;
+        left = l;
+        right = r;
+    }
 
     public void reset(){
         this.setLocation(initialX,initialY);
         this.setDeltas(gen.nextInt(50)+1,gen.nextInt(20)+1);
         this.setVisible(true);
+        canMove = true;
     }
 }

@@ -27,8 +27,10 @@ public class World extends ButtonWindow{
         theBall = new Ball(10,10,75,75, "#8700c6");
         middle.add(theBall,0);
 
-        theOtherBall = new Ball(100,100,75,75, "#ff0000");
+        theOtherBall = new Ball(1360,10,75,75, "#ff0000");
         middle.add(theOtherBall,0);
+
+        theOtherBall.setDeltaX(theOtherBall.getDeltaX()*-1);
 
         win.repaint();
 
