@@ -1,14 +1,27 @@
+import javax.swing.*;
 import java.awt.*;
 
 public class World extends ButtonWindow{
 
     private ButtonWindowFrame win;
+
     private Rectangle border;
     private Rectangle middle;
+
     private Ball theBall;
-    private Ball theOtherBall;
+
+    private Ball hole;
+    private Ball hole2;
+    private Ball hole3;
+    private Ball hole4;
+
+    private JLabel label;
 
     public World(){
+
+        label = new JLabel("");
+        label.setBounds(50,800,1000,100);
+        label.setVisible(true);
 
         win = new ButtonWindowFrame("Bouncing Ball");
         win.setBounds(50,50,1510,900);
@@ -17,34 +30,57 @@ public class World extends ButtonWindow{
 
         border = new Rectangle(0,0,1500,700);
         border.setVisible(true);
+        border.setBackground(Color.decode("#724a00"));
         win.add(border,0);
 
         middle = new Rectangle(20,20,1460,660);
-        middle.setBackground(Color.decode("#ffffff"));
+        middle.setBackground(Color.decode("#016300"));
         middle.setVisible(true);
         border.add(middle,0);
 
-        theBall = new Ball(10,10,75,75, "#8700c6");
+        theBall = new Ball((middle.getWidth()/2)-60,(middle.getHeight()/2)-60,75,75, "#ffffff");
         middle.add(theBall,0);
 
-        theOtherBall = new Ball(1360,10,75,75, "#ff0000");
-        middle.add(theOtherBall,0);
+        theBall.setDeltaX(theBall.getDeltaX()*-1);
 
-        theOtherBall.setDeltaX(theOtherBall.getDeltaX()*-1);
+        hole = new Ball(middle.getWidth()-80,middle.getHeight()-80,120,120, "#000000");
+        middle.add(hole,0);
+
+        hole2 = new Ball(-40,middle.getHeight()-80,120,120, "#000000");
+        middle.add(hole2,0);
+
+        hole3 = new Ball(middle.getWidth()-80,-40,120,120, "#000000");
+        middle.add(hole3,0);
+
+        hole4 = new Ball(-40,-40,120,120, "#000000");
+        middle.add(hole4,0);
+
+        win.add(label,0);
 
         win.repaint();
 
     }
 
     public void act(){
-        theBall.move(middle, theOtherBall.getTop(), theOtherBall.getBottom(), theOtherBall.getLeft(), theOtherBall.getRight());
-        theOtherBall.move(middle, theBall.getTop(), theBall.getBottom(), theBall.getLeft(), theBall.getRight());
+        if(theBall.canMove) {
+            theBall.move(middle);
+
+            if(theBall.checkCollision(hole.getTop(), hole.getBottom(), hole.getLeft(), hole.getRight()))
+                label.setText("The Ball Went in the BOTTOM RIGHT Pocket");
+            else if(theBall.checkCollision(hole2.getTop(), hole2.getBottom(), hole2.getLeft(), hole2.getRight()))
+                label.setText("The Ball Went in the BOTTOM LEFT Pocket");
+            else if(theBall.checkCollision(hole3.getTop(), hole3.getBottom(), hole3.getLeft(), hole3.getRight()))
+                label.setText("The Ball Went in the TOP RIGHT Pocket");
+            else if(theBall.checkCollision(hole4.getTop(), hole4.getBottom(), hole4.getLeft(), hole4.getRight()))
+                label.setText("The Ball Went in the TOP LEFT Pocket");
+        }
     }
     public void resetAction() {
         win.stop();
         theBall.reset();
-        theOtherBall.reset();
+        hole.reset();
         win.setAnimateButtonText("Start");
+        label.setText("");
     }
 
     public static void main(String[] args) {
