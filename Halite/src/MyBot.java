@@ -1,5 +1,3 @@
-package raklan;
-
 import hlt.*;
 
 import java.util.ArrayList;
@@ -30,12 +28,22 @@ public class MyBot {
                         break;
                     }
 
+                    double closest = 1000;
+                    if(ship.getDistanceTo(planet)<closest)
+                        closest = ship.getDistanceTo(planet);
+                    if(ship.getDistanceTo(planet)>closest)
+                        continue;
+
                     final ThrustMove newThrustMove = Navigation.navigateShipToDock(gameMap, ship, planet, Constants.MAX_SPEED/2);
                     if (newThrustMove != null) {
                         moveList.add(newThrustMove);
                     }
 
                     break;
+                }
+                for (final Planet planet : gameMap.getAllPlanets().values()) {
+                    Position pos = ship.getClosestPoint(planet);
+                    final ThrustMove thrustMOVE = Navigation.navigateShipTowardsTarget(gameMap, ship, pos, Constants.MAX_SPEED/2, true, 100, 100);
                 }
             }
             Networking.sendMoves(moveList);
