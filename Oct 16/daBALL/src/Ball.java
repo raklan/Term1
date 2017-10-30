@@ -17,6 +17,8 @@ public class Ball extends Oval{
 
     public boolean canMove;
 
+    private int count;
+
     public Ball(int x,int y,int w,int h, String c){
         super(x,y,w,h);
 
@@ -36,15 +38,21 @@ public class Ball extends Oval{
         bottom = this.getY()+this.getHeight();
         left = this.getX();
         right = this.getX()+this.getWidth();
+
+        count = 0;
     }
     public void move(Rectangle middle){
 
         if(canMove) {
 
-            if (this.getX() >= middle.getWidth() - this.getWidth() || this.getX() <= 0)
+            if (this.getX() >= middle.getWidth() - this.getWidth() || this.getX() <= 0) {
                 this.setDeltaX(this.getDeltaX() * -1);
-            if (this.getY() >= middle.getHeight() - this.getHeight() || this.getY() <= 0)
+                count++;
+            }
+            if (this.getY() >= middle.getHeight() - this.getHeight() || this.getY() <= 0) {
                 this.setDeltaY(this.getDeltaY() * -1);
+                count++;
+            }
             this.setLocation(this.getX() + deltaX, this.getY() + deltaY);
 
             this.setSides(this.getY(), this.getY() + this.getHeight(), this.getX(), this.getX() + this.getWidth());
@@ -91,6 +99,7 @@ public class Ball extends Oval{
         this.setLocation(initialX,initialY);
         this.setDeltas(gen.nextInt(50)+1,gen.nextInt(20)+1);
         this.setVisible(true);
+        count = 0;
         canMove = true;
     }
 
@@ -98,28 +107,24 @@ public class Ball extends Oval{
 
         //TopLeft
         if (this.bottom > otherTop && this.bottom < otherBottom && this.right > otherLeft && this.right < otherRight) {
-            this.reset();
             this.setVisible(false);
             canMove = false;
             return true;
         }
         //TopRight
         if (this.bottom > otherTop && this.bottom < otherBottom && this.left > otherLeft && this.left < otherLeft) {
-            this.reset();
             this.setVisible(false);
             canMove = false;
             return true;
         }
         //BottomLeft
         if (this.top > otherTop && this.top < otherBottom && this.right > otherLeft && this.right < otherRight) {
-            this.reset();
             this.setVisible(false);
             canMove = false;
             return true;
         }
         //BottomRight
         if (this.top > otherTop && this.top < otherBottom && this.left > otherLeft && this.left < otherRight) {
-            this.reset();
             this.setVisible(false);
             canMove = false;
             return true;
@@ -127,5 +132,8 @@ public class Ball extends Oval{
         else
             return false;
 
+    }
+    public int getCount(){
+        return count;
     }
 }

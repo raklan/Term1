@@ -66,13 +66,13 @@ public class World extends ButtonWindow{
             theBall.move(middle);
 
             if(theBall.checkCollision(hole.getTop(), hole.getBottom(), hole.getLeft(), hole.getRight()))
-                label.setText("The Ball Went in the BOTTOM RIGHT Pocket");
+                label.setText("The Ball Went in the BOTTOM RIGHT Pocket after bouncing "+theBall.getCount()+" times.");
             else if(theBall.checkCollision(hole2.getTop(), hole2.getBottom(), hole2.getLeft(), hole2.getRight()))
-                label.setText("The Ball Went in the BOTTOM LEFT Pocket");
+                label.setText("The Ball Went in the BOTTOM LEFT Pocket after bouncing "+theBall.getCount()+" times.");
             else if(theBall.checkCollision(hole3.getTop(), hole3.getBottom(), hole3.getLeft(), hole3.getRight()))
-                label.setText("The Ball Went in the TOP RIGHT Pocket");
+                label.setText("The Ball Went in the TOP RIGHT Pocket after bouncing "+theBall.getCount()+" times.");
             else if(theBall.checkCollision(hole4.getTop(), hole4.getBottom(), hole4.getLeft(), hole4.getRight()))
-                label.setText("The Ball Went in the TOP LEFT Pocket");
+                label.setText("The Ball Went in the TOP LEFT Pocket after bouncing "+theBall.getCount()+" times.");
         }
     }
     public void resetAction() {
