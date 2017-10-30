@@ -76,8 +76,8 @@ public class World extends ButtonWindow{
         }
     }
     public void resetAction() {
-        win.stop();
         theBall.reset();
+        win.stop();
         hole.reset();
         win.setAnimateButtonText("Start");
         label.setText("");

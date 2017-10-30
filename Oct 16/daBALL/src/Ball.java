@@ -10,6 +10,9 @@ public class Ball extends Oval{
     private final int initialX;
     private final int initialY;
 
+    private int yesChangeX;
+    private int yesChangeY;
+
     private int top;
     private int bottom;
     private int left;
@@ -26,6 +29,16 @@ public class Ball extends Oval{
 
         deltaX = gen.nextInt(50)+1;
         deltaY = gen.nextInt(50)+1;
+
+        yesChangeX = gen.nextInt(2);
+
+        if(yesChangeX==1)
+            deltaX *=-1;
+
+        yesChangeY = gen.nextInt(2);
+
+        if(yesChangeY==1)
+            deltaY*=1;
 
         this.setBackground(Color.decode(c));
 
