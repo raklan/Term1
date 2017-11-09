@@ -19,7 +19,7 @@ public class Polygon extends Container
     /**
      * Constructor for objects of class Polygon
      */
-    public Polygon(int x, int y, int size, int n, double startAngle,Color c)
+    public Polygon(int x, int y, int size, int n, double startAngle, Color c)
     {
         // initialise instance variables
         setBounds (0, 0, 800, 800);
