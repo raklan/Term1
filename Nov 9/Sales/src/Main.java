@@ -34,6 +34,35 @@ public class Main {
         avg = Math.round(avg*100.0)/100.0;
 
 
+        for(int i = 0; i<sales.length; i++){
+            switch(i){
+                case 0:
+                    System.out.println("The sales for Monday was: "+(Math.round(sales[i]*100.0)/100.0));
+                    break;
+                case 1:
+                    System.out.println("The sales for Tuesday was: "+(Math.round(sales[i]*100.0)/100.0));
+                    break;
+                case 2:
+                    System.out.println("The sales for Wednesday was: "+(Math.round(sales[i]*100.0)/100.0));
+                    break;
+                case 3:
+                    System.out.println("The sales for Thursday was: "+(Math.round(sales[i]*100.0)/100.0));
+                    break;
+                case 4:
+                    System.out.println("The sales for Friday was: "+(Math.round(sales[i]*100.0)/100.0));
+                    break;
+                case 5:
+                    System.out.println("The sales for Saturday was: "+(Math.round(sales[i]*100.0)/100.0));
+                    break;
+                case 6:
+                    System.out.println("The sales for Sunday was: "+(Math.round(sales[i]*100.0)/100.0));
+                    break;
+            }
+
+        }
+        System.out.println();
+
+
         System.out.println("The maximum sales was $"+max);
         System.out.println("The minimum sales was $"+min);
         System.out.println("The average sales was $"+avg);
