@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 /**
  * Write a description of class Polygon here.
