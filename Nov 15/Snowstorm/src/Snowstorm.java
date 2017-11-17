@@ -8,7 +8,7 @@ public class Snowstorm extends ButtonWindow{
 
     private static Random gen = new Random();
 
-    private Snowflake[] flakes = new Snowflake[30];
+    private Snowflake[] flakes = new Snowflake[350];
 
     public Snowstorm(){
         win = new ButtonWindowFrame("Snowstorm");
@@ -19,7 +19,7 @@ public class Snowstorm extends ButtonWindow{
         win.addAnimateButton(0,0,100,50);
 
         for(int i = 0; i<flakes.length; i++){
-            flakes[i] = new Snowflake(gen.nextInt(900)+1,-350, 10,gen.nextInt(3)+1);
+            flakes[i] = new Snowflake(gen.nextInt(900)+1,((gen.nextInt(500)+200)*-1), 10,gen.nextInt(6)+1, gen.nextInt(200)+1);
             flakes[i].setVisible(true);
             win.add(flakes[i]);
         }
@@ -36,8 +36,8 @@ public class Snowstorm extends ButtonWindow{
     public void act(){
         for(int i=0;i<flakes.length;i++){
             if(flakes[i].moveFlake(win.getHeight(), win.getWidth())) {
-                flakes[i].setLocation(gen.nextInt(900) + 10, -350);
-                flakes[i].setDeltas(gen.nextInt(3)+1, gen.nextInt(5)+1);
+                flakes[i].spawn();
+                flakes[i].setDeltas(gen.nextInt(2)+1, gen.nextInt(4)+1);
             }
         }
     }
