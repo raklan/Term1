@@ -35,6 +35,7 @@ public class Song {
     public void setArtist(String artist) {
         this.artist = artist;
     }
+
     public String toString(){
         return "\""+name+"\" is by "+artist+" from the album \""+album+"\"";
     }
