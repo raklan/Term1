@@ -87,15 +87,16 @@ public class IPad {
                     if(s.getName().equalsIgnoreCase(input)) {
                         found = true;
                         theFound = s;
+                        break;
                     }
                 }
 
                 if(found){
-                    System.out.println("Song Found:");
+                    System.out.println("Song Found: ");
                     System.out.println(theFound.toString());
                 }
                 else
-                    System.out.println("Song not found");
+                    System.out.println("There are no songs matching that name.");
 
             }
             else if(input.equalsIgnoreCase("N")){
