@@ -14,6 +14,9 @@ public class Main {
         printArray(theList);
         arrayToFile(theList);
 
+        saveData();
+        readData();
+
     }
 
     private static void fileToArray(ArrayList<String>list){
@@ -82,6 +85,40 @@ public class Main {
             reader.close();
         }catch(IOException e){
             System.out.println("Error: Couldn't Read from File");
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveData(){
+
+        try {
+            DataOutputStream dataOut = new DataOutputStream(new FileOutputStream("info.txt"));
+
+            dataOut.writeInt(4);
+            dataOut.writeDouble(5.3);
+            dataOut.writeBoolean(true);
+            dataOut.close();
+
+        }catch(IOException e){
+            System.out.println("Error: Could not write to file");
+            e.printStackTrace();
+        }
+    }
+
+    public static void readData(){
+        try {
+
+            DataInputStream dataIn = new DataInputStream(new FileInputStream("info.txt"));
+
+            int i = dataIn.readInt();
+            double d = dataIn.readDouble();
+            boolean b = dataIn.readBoolean();
+            System.out.println(i);
+
+            dataIn.close();
+
+        }catch(IOException e){
+            System.out.println("Error: Could not read from file");
             e.printStackTrace();
         }
     }
